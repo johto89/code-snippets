@@ -23,7 +23,7 @@ def listToString(listinput):
     # return string  
     return str1
 
-def caesar_encrypt(realText, step):
+def caesarEncrypt(realText, step):
 	outText = []
 	cryptText = []
 
@@ -56,7 +56,7 @@ def caesar_encrypt(realText, step):
 		    outText.append(eachLetter)
 	return outText
 	
-def caesar_decrypt(realText, step):
+def caesarDecrypt(realText, step):
 	outText = []
 	cryptText = []
 
@@ -89,6 +89,6 @@ def caesar_decrypt(realText, step):
 		    outText.append(eachLetter)
 	return outText
 
-print(listToString(caesar_encrypt('messages', 3)))
+print(listToString(caesarEncrypt('messages', 3)))
 
-print(listToString(caesar_decrypt('phvvdjhv', 3)))
+print(listToString(caesarDecrypt('phvvdjhv', 3)))
