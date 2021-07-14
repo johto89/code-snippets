@@ -104,11 +104,11 @@ def main():
     if args.mode == "e" or args.mode == "encrypt":
         msg = input('Message...: ')
         pwd = input('Password..: ')
-        print(listToString(caesarEncrypt(msg, int(pwd))))
+        print(listToString(caesarEncrypt(msg, len(pwd))))
     elif args.mode == "d" or args.mode == "decrypt":
         msg = input('Message...: ')
         pwd = input('Password..: ')
-        print(listToString(caesarDecrypt(msg, int(pwd))))
+        print(listToString(caesarDecrypt(msg, len(pwd))))
     else:
         print("python caesar.py --help                     - show this help message")
         sys.exit()
