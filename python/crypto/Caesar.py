@@ -7,6 +7,8 @@ Support: Vietnamese language, number, special symbol
 @author: Johto Robbie
 """
 
+import sys, argparse
+
 uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 specialcase = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
@@ -88,7 +90,29 @@ def caesarDecrypt(realText, step):
 		else:
 		    outText.append(eachLetter)
 	return outText
+    
 
-print(listToString(caesarEncrypt('messages', 3)))
+def main():
+    msg = ""
+    pwd = ""
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", help="Choose encrypt mode or decrypt mode", \
+                        choices=["e", "encode", "d", "decode"])
+    args = parser.parse_args()
+    
+    if args.mode == "e" or args.mode == "encrypt":
+        msg = input('Message...: ')
+        pwd = input('Password..: ')
+        print(listToString(caesarEncrypt(msg, int(pwd))))
+    elif args.mode == "d" or args.mode == "decrypt":
+        msg = input('Message...: ')
+        pwd = input('Password..: ')
+        print(listToString(caesarDecrypt(msg, int(pwd))))
+    else:
+        print("python caesar.py --help                     - show this help message")
+        sys.exit()
 
-print(listToString(caesarDecrypt('phvvdjhv', 3)))
+
+if __name__ == "__main__":
+    main()
