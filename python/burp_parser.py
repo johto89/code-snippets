@@ -9,7 +9,7 @@ if __name__ == '__main__':
     if not os.path.isfile(FILE_NAME):
         sys.exit(f'[-] File {FILE_NAME} not found')
     data = open(FILE_NAME, 'r').read()
-    paths = re.findall(r'<url><!\[CDATA\[https://www.lazada.vn(/.+?)/.*]]></url>', data)
+    paths = re.findall(r'<url><!\[CDATA\[https://domain(/.+?)/.*]]></url>', data)
     paths.sort()
     if paths == '':
         sys.exit('[-] There is no link found')
